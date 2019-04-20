@@ -2,6 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "lerna": "^3.13.3"
+    "lerna": "^3.13.3",
+    "scaffdog": "^0.0.7"
   }
 }
