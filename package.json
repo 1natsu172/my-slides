@@ -1,11 +1,19 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": ["slides/*"],
+  "config": {
+    "slidesDir": "slides"
+  },
+  "workspaces": [
+    "slides/*"
+  ],
   "devDependencies": {
     "@types/node": "^11.13.6",
     "scaffdog": "^0.0.7",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.4"
+  },
+  "scripts": {
+    "new-slide": "scaffdog generate new-slide",
   }
 }
