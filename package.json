@@ -15,5 +15,6 @@
   },
   "scripts": {
     "new-slide": "scaffdog generate new-slide",
+    "generateNowJson": "ts-node ./scripts/generate-now-json.ts"
   }
 }
