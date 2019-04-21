@@ -14,7 +14,7 @@
     "typescript": "^3.4.4"
   },
   "scripts": {
-    "new-slide": "scaffdog generate new-slide",
+    "new-slide": "scaffdog generate new-slide && yarn generateNowJson",
     "generateNowJson": "ts-node ./scripts/generate-now-json.ts"
   }
 }
