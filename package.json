@@ -1,6 +1,7 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": ["slides/*"],
   "devDependencies": {
     "scaffdog": "^0.0.7",
     "ts-node": "^8.1.0",
