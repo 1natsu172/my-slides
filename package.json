@@ -9,10 +9,6 @@
   ],
   "devDependencies": {
     "@types/node": "^11.13.6",
-    "mdx-deck": "1.10.2",
-    "mdx-deck-code-surfer": "^0.5.5",
-    "mdx-deck-live-code": "^1.0.1",
-    "raw-loader": "^2.0.0",
     "scaffdog": "^0.0.7",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.4"
@@ -22,6 +18,10 @@
     "generateNowJson": "ts-node ./scripts/generate-now-json.ts"
   },
   "dependencies": {
-    "prism-react-renderer": "^0.1.6"
+    "mdx-deck": "1.10.2",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "mdx-deck-live-code": "^1.0.1",
+    "prism-react-renderer": "^0.1.6",
+    "raw-loader": "^2.0.0"
   }
 }
