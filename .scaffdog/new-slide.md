@@ -27,7 +27,7 @@ https://github.com/cats-oss/scaffdog/#templates
   "private": true,
   "scripts": {
     "start": "mdx-deck ./deck.mdx",
-    "now-build": "mdx-deck build ./deck.mdx && cp -r ./images dist"
+    "now-build": "mdx-deck build --no-html ./deck.mdx && cp -r ./images dist"
   }
 }
 ```
