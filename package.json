@@ -20,5 +20,8 @@
   "scripts": {
     "new-slide": "scaffdog generate new-slide && yarn generateNowJson",
     "generateNowJson": "ts-node ./scripts/generate-now-json.ts"
+  },
+  "dependencies": {
+    "prism-react-renderer": "^0.1.6"
   }
 }
