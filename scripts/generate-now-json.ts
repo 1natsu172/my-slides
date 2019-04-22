@@ -7,8 +7,6 @@ const slideRepoNames: string[] = readdirSync(SLIDES_DIR).map(
   slideName => slideName
 )
 
-console.log(slideRepoNames)
-
 const fixedObject = {
   version: 2,
   name: 'my-slides',
