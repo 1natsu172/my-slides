@@ -19,3 +19,10 @@ exec **`yarn new-slide`**
 exec **`yarn build`**
 
 TODO: write.
+
+## @Todo
+
+* About lock `mdx-deck@1.10.2`
+  * `code-surfer` is not support `mdx-deck@2.x.x`
+    * https://github.com/pomber/code-surfer/issues/53
+
