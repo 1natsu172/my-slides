@@ -93,3 +93,6 @@ edit indexes
 # `{{ input }}/images/.gitkeep`
 ```
 ```
+# `{{ input }}/codes/.gitkeep`
+```
+```
