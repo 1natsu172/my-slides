@@ -20,9 +20,11 @@ exec **`yarn build`**
 
 TODO: write.
 
-## @Todo
+## @Todo&Memo
 
 * About lock `mdx-deck@1.10.2`
   * `code-surfer` is not support `mdx-deck@2.x.x`
     * https://github.com/pomber/code-surfer/issues/53
+  * Docs/v1
+    * https://github.com/jxnblk/mdx-deck/tree/v1.10.2/docs
 
