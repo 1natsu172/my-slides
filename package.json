@@ -16,7 +16,8 @@
   },
   "scripts": {
     "new-slide": "scaffdog generate new-slide && yarn generateNowJson",
-    "generateNowJson": "ts-node ./scripts/generate-now-json.ts"
+    "generateNowJson": "ts-node ./scripts/generate-now-json.ts",
+    "deploy": "now --target production"
   },
   "dependencies": {
     "dayjs": "^1.8.12",
