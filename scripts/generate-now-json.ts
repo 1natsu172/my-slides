@@ -12,7 +12,7 @@ const fixedObject = {
   version: 2,
   name: 'my-slides',
   public: true,
-  alias: ['slides-1natsu.now.sh']
+  alias: ['slides-1natsu.now.sh', 'slides.1natsu.net']
 }
 
 const staticAssetsBuild = [
