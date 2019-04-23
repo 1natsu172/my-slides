@@ -14,6 +14,7 @@ import { Head } from "mdx-deck";
 import { Split } from "mdx-deck/layouts";
 import { CodeSurfer } from "mdx-deck-code-surfer";
 import vsDarkPlus from "prism-react-renderer/themes/vsDarkPlus";
+import dayjs from 'dayjs';
 import { Meta } from "{{ relative "../shared-assets/components" }}";
 import { myBaseTheme } from "{{ relative "../shared-assets/custom-themes" }}";
 
@@ -24,7 +25,7 @@ export const theme = myBaseTheme()
     title="@TODO: SLIDE_TITLE"
     description="@TODO: SLIDE_DESC"
     slug="{{ input }}"
-    publishedAt={new Date(@TODO: EVENT_DATE)}
+    publishedAt={dayjs('@TODO: EVENT_DATE')} // e.g. '2019-04-27'
   />
     <link
     href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Sawarabi+Mincho"

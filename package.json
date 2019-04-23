@@ -19,6 +19,7 @@
     "generateNowJson": "ts-node ./scripts/generate-now-json.ts"
   },
   "dependencies": {
+    "dayjs": "^1.8.12",
     "mdx-deck": "1.10.2",
     "mdx-deck-code-surfer": "^0.5.5",
     "mdx-deck-live-code": "^1.0.1",
