@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "name": "my-slides",
+  "public": true,
+  "alias": [
+    "slides-1natsu.now.sh",
+    "slides.1natsu.net"
+  ],
+  "builds": [
+    {
+      "src": "shared-assets/images/*",
+      "use": "@now/static"
+    },
+    {
+      "src": "slides/strategy-and-knowledge-for-moderately-good-npm-publish/package.json",
+      "use": "@now/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/slides/$1"
+    }
+  ]
+}
