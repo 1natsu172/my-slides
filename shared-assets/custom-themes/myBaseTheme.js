@@ -11,9 +11,10 @@ const header = {
 
 const myBaseTheme = {
   ...theme,
+  transitionDuration: '0',
   colors: {
     ...theme.colors,
-    background: '#002C2B'
+    background: '#1F2B44'
   },
   h1: {
     ...(theme.h1 || {}),
