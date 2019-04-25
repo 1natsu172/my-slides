@@ -1,0 +1,13 @@
+{
+  "name": "strategy-and-knowledge-for-moderately-good-npm-publish",
+  "description": "strategy-and-knowledge-for-moderately-good-npm-publish",
+  "version": "1.0.0",
+  "author": "1natsu",
+  "keywords": [],
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "mdx-deck ./deck.mdx",
+    "now-build": "mdx-deck build --no-html ./deck.mdx && cp -r ./images dist"
+  }
+}

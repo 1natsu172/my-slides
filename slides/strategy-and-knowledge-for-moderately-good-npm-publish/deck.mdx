@@ -1,0 +1,300 @@
+import { Head, Image, Appear } from 'mdx-deck'
+import { Split } from 'mdx-deck/layouts'
+import { CodeSurfer } from 'mdx-deck-code-surfer'
+import vsDarkPlus from 'prism-react-renderer/themes/vsDarkPlus'
+import dayjs from 'dayjs'
+import { Meta } from '../../shared-assets/components'
+import { myBaseTheme } from '../../shared-assets/custom-themes'
+
+export const theme = myBaseTheme()
+
+<Head>
+  <Meta
+    title="@TODO: SLIDE_TITLE"
+    description="@TODO: SLIDE_DESC"
+    slug="strategy-and-knowledge-for-moderately-good-npm-publish"
+    publishedAt={dayjs('2019-04-27')}
+  />
+  <link
+    href="https://fonts.googleapis.com/css?family=Noto+Sans+JP|Sawarabi+Mincho"
+    rel="stylesheet"
+  />
+</Head>
+
+<!-- // EXAMPLE of CodeSurfer // -->
+<!-- <CodeSurfer
+  title="Some Title"
+  code={require("!raw-loader!./my-snippet.ts")}
+  lang="typescript"
+  showNumbers={false}
+  dark={false}
+  steps={[
+    { notes: "Start with this note"},
+    { lines: [6], notes: "Note for the first step" },
+    { range: [5, 9] },
+    { tokens: { 9: [3, 4, 5] }, notes: "Note for the third step" }
+  ]}
+/> -->
+
+## 文脈の多いこのご時世に
+
+## ユーザーフレンドリーなモジュールを
+
+## npm-publish
+
+[Kyoto.js 16](https://kyotojs.connpass.com/event/124671/)
+
+---
+
+export default Split
+
+![](https://github.com/1natsu172.png)
+
+## 1natsu
+
+わかったためしがない
+
+---
+
+# このスライドの方針
+
+- 今後を見据えてモジュールを作りたいが
+  - がんばりたくもない
+  - なんか現状いい感じにしとく方法を模索している
+
+---
+
+# CAVEAT
+
+- ベストプラクティスではない
+- いろんな文脈のこまごまとした話
+  - しません
+- experimental な内容が含まれる
+  - なんか間違ってるかも
+  - 事情が変わるかも
+- ケース・バイ・ケースなので
+  - 諦めるという選択もあり
+- 個々のケースの詳細なコード説明
+  - あんまりしません
+
+---
+
+#  ステークホルダー？？
+
+---
+
+<ul style={{ display: 'inline-block' }}>
+  <Appear>
+    <li>CommonJS</li>
+    <li>ESModule</li>
+    <li>AMD</li>
+    <li>UMD</li>
+    <li>etc...</li>
+  </Appear>
+</ul>
+
+---
+
+<ul style={{ display: 'inline-block' }}>
+  <Appear>
+    <li>Browserify</li>
+    <li>Webpack</li>
+    <li>Rollup</li>
+    <li>...etc</li>
+  </Appear>
+</ul>
+
+---
+
+<ul style={{ display: 'inline-block' }}>
+  <Appear>
+    <li>.js</li>
+    <li>.ts</li>
+    <li>.mjs</li>
+  </Appear>
+</ul>
+
+---
+
+# 文脈が多い
+
+誰がどこでどういう風に使うのかが多岐にわたる
+
+---
+
+# 提供者として
+
+どう吐き出しておけばよい？
+
+---
+
+# おさらい
+
+`package.json`のフィールド指定
+
+---
+
+```json
+{
+  "typings": "dist/index.d.ts", // 型定義
+  "main": "dist/index.js", // CommonJS
+  "module": "dist/index.es.js", // ESModule
+  "browser": "dist/index.umd.js", // UMD
+  "unpkg": "dist/index.umd.js", // unpkg(UMD)
+  "jsdelivr": "dist/index.umd.js", // jsDelivr(UMD)
+  "files": ["dist"] // whitelist形式でnpmに実際に上がるファイルを指定
+}
+```
+
+---
+
+# なんかいろいろ用意しないといけないっすね
+
+---
+
+# Case.1
+
+---
+
+## 『やらない』という施策
+
+---
+
+## index.js から素朴に`module.exports`や！
+
+<Appear>アリといえばあり</Appear>
+
+---
+
+<ul style={{ display: 'inline-block' }}>
+  <Appear>
+    <h3>失うもの</h3>
+    <li>TreeShaking</li>
+    <li>CodeSpliting</li>
+    <li>人類の時間</li>
+    <li>etc...</li>
+  </Appear>
+</ul>
+
+---
+
+# 嫌な予感がする
+
+---
+
+## 『Please support TypeScript』
+
+---
+
+## `d.ts` 作って対応
+
+型定義欲しい気持ちはユーザー目線で見ると<br/>『わかる』
+
+---
+
+## バージョンアップで<br/> `d.ts` 追従させるのしんどい
+
+<Appear>ユーザーから PR が仮に飛んできてもしんどい</Appear>
+
+---
+
+## TS で最初から書くかという気持ちになってしまう
+
+---
+
+## TS で書く
+
+---
+
+## c.f.
+
+> TypeScript 再入門 ― 「がんばらない TypeScript」で、JavaScript を“柔らかい”静的型付き言語に - https://employment.en-japan.com/engineerhub/entry/2019/04/16/103000
+
+---
+
+# Case.2
+
+---
+
+## TS で書いて
+
+## よっしゃできたぞってなって
+
+---
+
+## 🤔 どう吐き出すか 🤔
+
+なにかしらコンパイルが必要
+
+---
+
+<ul style={{ display: 'inline-block', textAlign: 'left' }}>
+  <Appear>
+    <li>
+      RollupとかWebpackとか…
+      <ul>
+        <li>TS向けのplugin/loader</li>
+      </ul>
+    </li>
+    <li>
+      Babel7
+      <ul>
+        <li>babelどこで動かそう</li>
+      </ul>
+    </li>
+  </Appear>
+</ul>
+
+---
+
+## 見返りがあるならガンバリで config 書いてもよいが…
+
+- 質素なモジュールではしんどい
+  - config のメンテな〜
+
+---
+
+## TS のコンパイラで素朴に吐く
+
+---
+
+```json
+"scripts": {
+  "build": "npm run build:esnext && npm run build:esm && npm run build:cjs",
+  "build:esnext": "tsc --module esnext --target esnext --outDir dist/es --project tsconfig.prod.json",
+  "build:esm": "tsc --module esnext --target es5 --outDir dist/esm --project tsconfig.prod.json",
+  "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs --project tsconfig.prod.json"
+}
+```
+
+---
+
+# Case.3
+
+---
+
+## もうちょいなんかラクしつつ<br/>いい感じになって欲しい
+
+<Appear>ツールに頼る作戦</Appear>
+
+---
+
+## モジュール吐き出し用のバンドラ<br/>いろいろある
+
+いくつか見てよさげなやつを紹介
+
+---
+
+## Microbundle
+
+---
+
+## Bili
+
+---
+
+## @pika/pack
+
+---
+
+# 終
