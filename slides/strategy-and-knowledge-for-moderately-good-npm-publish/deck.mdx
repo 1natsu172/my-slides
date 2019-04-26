@@ -62,6 +62,11 @@ export default Split
   - がんばりたくもない
   - なんか現状いい感じにしとく方法を模索している
 
+```notes
+`.mjs`はまだもうちょい先という認識なので、ステイということで。
+できる限り`.mjs`に対応しやすくしておきたくはある…
+```
+
 ---
 
 # CAVEAT
@@ -72,6 +77,11 @@ export default Split
 - experimental な内容が含まれる
   - なんか間違ってるかも
   - 事情が変わるかも
+
+---
+
+# CAVEAT
+
 - ケース・バイ・ケースなので
   - 諦めるという選択もあり
 - 個々のケースの詳細なコード説明
@@ -79,9 +89,11 @@ export default Split
 
 ---
 
-#  ステークホルダー？？
+# 文脈
 
 ---
+
+### 形式
 
 <ul style={{ display: 'inline-block' }}>
   <Appear>
@@ -95,6 +107,8 @@ export default Split
 
 ---
 
+### バンドラ
+
 <ul style={{ display: 'inline-block' }}>
   <Appear>
     <li>Browserify</li>
@@ -105,6 +119,8 @@ export default Split
 </ul>
 
 ---
+
+### 拡張子
 
 <ul style={{ display: 'inline-block' }}>
   <Appear>
@@ -134,17 +150,44 @@ export default Split
 
 ---
 
-```json
-{
-  "typings": "dist/index.d.ts", // 型定義
-  "main": "dist/index.js", // CommonJS
-  "module": "dist/index.es.js", // ESModule
-  "browser": "dist/index.umd.js", // UMD
-  "unpkg": "dist/index.umd.js", // unpkg(UMD)
-  "jsdelivr": "dist/index.umd.js", // jsDelivr(UMD)
-  "files": ["dist"] // whitelist形式でnpmに実際に上がるファイルを指定
-}
-```
+<CodeSurfer
+  title="Package.jsonの一部"
+  code={require("!raw-loader!codes/osarai.js")}
+  lang="js"
+  showNumbers={false}
+  theme={vsDarkPlus}
+  dark
+  steps={[
+    {
+      lines: [2],
+      notes: '型定義ファイルの指定 - フィールド名は"types"でもOK'
+    },
+    {
+      lines: [3],
+      notes: 'mainにCommonJS'
+    },
+    {
+      lines: [4],
+      notes: 'moduleにESModule'
+    },
+    {
+      lines: [5],
+      notes: 'browserにumdとか'
+    },
+    {
+      lines: [6,7],
+      notes: 'CDN配信 - 書いとくと参照してくれる'
+    },
+    {
+      lines: [8],
+      notes: '必要なファイルだけを配布する'
+    },
+    {
+      lines: [9],
+      notes: 'ユーザー側のモジュールバンドラが対応してれば参照する'
+    }
+  ]}
+/>
 
 ---
 
@@ -160,15 +203,16 @@ export default Split
 
 ---
 
-## index.js から素朴に`module.exports`や！
+## index.js から素朴に<br/>`module.exports`や！
 
 <Appear>アリといえばあり</Appear>
 
 ---
 
+### 失うもの
+
 <ul style={{ display: 'inline-block' }}>
   <Appear>
-    <h3>失うもの</h3>
     <li>TreeShaking</li>
     <li>CodeSpliting</li>
     <li>人類の時間</li>
@@ -176,9 +220,13 @@ export default Split
   </Appear>
 </ul>
 
+```notes
+.mjsに対応が困難になりそう
+```
+
 ---
 
-# 嫌な予感がする
+# だがしかし
 
 ---
 
@@ -222,11 +270,13 @@ export default Split
 
 ---
 
-## 🤔 どう吐き出すか 🤔
+## どう吐き出すか
 
 なにかしらコンパイルが必要
 
 ---
+
+## いろいろ考え出してしまう
 
 <ul style={{ display: 'inline-block', textAlign: 'left' }}>
   <Appear>
@@ -258,14 +308,25 @@ export default Split
 
 ---
 
-```json
-"scripts": {
-  "build": "npm run build:esnext && npm run build:esm && npm run build:cjs",
-  "build:esnext": "tsc --module esnext --target esnext --outDir dist/es --project tsconfig.prod.json",
-  "build:esm": "tsc --module esnext --target es5 --outDir dist/esm --project tsconfig.prod.json",
-  "build:cjs": "tsc --module commonjs --target es5 --outDir dist/cjs --project tsconfig.prod.json"
-}
-```
+
+<CodeSurfer
+  title="npm-scriptsに書く"
+  code={require("!raw-loader!codes/tsc-compile-scripts.js")}
+  lang="js"
+  showNumbers={false}
+  theme={vsDarkPlus}
+  dark
+  steps={[
+    {
+      lines: [3,4],
+      notes: 'tsconfig.prod.jsonをベースにして変えたいオプションを引数指定する'
+    },
+    {
+      lines: [2],
+      notes: '`npm run build`で各種生成'
+    },
+  ]}
+/>
 
 ---
 
@@ -287,13 +348,71 @@ export default Split
 
 ## Microbundle
 
+https://github.com/developit/microbundle
+
+* developit氏が主に作っている
+* TS対応
+* Rollupをラップ
+* zero-config
+* etc...
+
+---
+
+<CodeSurfer
+  title="Microbundle(v.0.11.0)"
+  code={require("!raw-loader!codes/microbundle-config.js")}
+  lang="js"
+  showNumbers={false}
+  theme={vsDarkPlus}
+  dark
+  steps={[
+    {notes:'リポジトリdocsから拝借'},
+    {
+      lines: [2],
+      notes: 'ソースファイルのパスを指定'
+    },
+    {
+      range: [3,5],
+      notes: 'おさらいでみたやつ'
+    },
+    {
+      range: [6,9],
+      notes: 'これだけ'
+    },
+  ]}
+/>
+
 ---
 
 ## Bili
 
+https://github.com/egoist/bili
+
+* egoist氏が主に作っている
+* 別にVue専用ではない
+* microbundleに似ているが
+  * オプショナル&プラガブル
+  * CSSまわりのサポートも厚い
+
 ---
 
 ## @pika/pack
+
+https://github.com/pikapkg/pack
+
+* 全部入り
+  * 野望という感じ
+* Configが必要
+  * 必要なプラグインを`npm install`して使う
+* publish用の`package.json`入りのディレクトリを作ってくれる
+* publishするためのcliも付いてくる
+
+
+---
+
+## 適材適所・十人十色なので
+
+### 規模感と自分がどこまでやりたいかによるので<br/>ベストプラクティスはない
 
 ---
 
