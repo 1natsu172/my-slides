@@ -38,7 +38,8 @@ export const Meta = ({
       property="article:published_time"
       content={publishedAt.toISOString()}
     />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {/* <meta name="viewport" content="width=device-width, initial-scale=1" /> */}
+    <meta name="viewport" content="width=1400" />
     <title>{title}</title>
   </Fragment>
 )
