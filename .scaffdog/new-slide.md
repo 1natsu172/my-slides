@@ -85,7 +85,8 @@ edit indexes
   "private": true,
   "scripts": {
     "start": "mdx-deck ./deck.mdx",
-    "now-build": "mdx-deck build --no-html ./deck.mdx && cp -r ./images dist"
+    "now-build": "mdx-deck build --no-html ./deck.mdx && cp -r ./images dist",
+    "export:pdf": "mdx-deck pdf ./deck.mdx --out-dir ./export"
   }
 }
 ```
