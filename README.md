@@ -12,13 +12,19 @@ exec **`yarn new-slide`**
 1. select output dir => `slides`
 2. Enter new slide project name.
 
+#### Start create slide content
+
+`yarn workspace <スライド名> run start`
+
+> `-p 9898` で別ポート可
+
+
 ### building site
 
 > hosting by now(static-builder).
 
-exec **`yarn build`**
+exec **`yarn deploy`** or GitPush(integrate GitHub repo with "now".)
 
-TODO: write.
 
 ## @Todo&Memo
 
