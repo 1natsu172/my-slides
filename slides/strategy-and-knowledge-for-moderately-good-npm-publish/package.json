@@ -10,5 +10,13 @@
     "start": "mdx-deck ./deck.mdx",
     "now-build": "mdx-deck build --no-html ./deck.mdx && cp -r ./images dist",
     "export:pdf": "mdx-deck pdf ./deck.mdx --out-dir ./export"
+  },
+  "dependencies": {
+    "dayjs": "^1.8.12",
+    "mdx-deck": "1.10.2",
+    "mdx-deck-code-surfer": "^0.5.5",
+    "mdx-deck-live-code": "^1.0.1",
+    "prism-react-renderer": "^0.1.6",
+    "raw-loader": "0.5.1"
   }
 }
